@@ -1,0 +1,81 @@
+
+
+
+ARM Macro Assembler    Page 1 HelloWorld
+
+
+    1 00000000                 TTL              HelloWorld
+    2 00000000                 AREA             RESET,DATA,READONLY
+    3 00000000                 EXPORT           __Vectors
+    4 00000000 20002000 
+                       __Vectors
+                               DCD              0x20002000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 AREA             MYCODE,CODE,READONLY
+    7 00000000         
+    8 00000000                 EXPORT           Reset_Handler
+    9 00000000         Reset_Handler
+   10 00000000 F240 0101 
+              F2C0 0100        MOV32            R1,0x00000001
+   11 00000008 F240 0202 
+              F2C0 0200        MOV32            R2,0x00000002
+   12 00000010         
+   13 00000010 EB01 0002       ADD              R0,R1,R2
+   14 00000014         
+   15 00000014 E7FE            B                Reset_Handler
+   16 00000016                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7 --fpu=SoftVFP
+ --apcs=interwork --depend=.\objects\programassignment1.d -o.\objects\programas
+signment1.o -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\
+ARMCM7\Include -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --pre
+define="__UVISION_VERSION SETA 524" --predefine="ARMCM7 SETA 1" --list=.\listin
+gs\programassignment1.lst ProgramAssignment1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 2 in file ProgramAssignment1.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file ProgramAssignment1.s
+   Uses
+      At line 3 in file ProgramAssignment1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MYCODE 00000000
+
+Symbol: MYCODE
+   Definitions
+      At line 6 in file ProgramAssignment1.s
+   Uses
+      None
+Comment: MYCODE unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 9 in file ProgramAssignment1.s
+   Uses
+      At line 5 in file ProgramAssignment1.s
+      At line 8 in file ProgramAssignment1.s
+      At line 15 in file ProgramAssignment1.s
+
+2 symbols
+337 symbols in table

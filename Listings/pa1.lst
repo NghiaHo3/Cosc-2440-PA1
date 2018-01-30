@@ -1,0 +1,172 @@
+
+
+
+ARM Macro Assembler    Page 1 PA2-Nghia Ho-PART2
+
+
+    1 00000000                 TTL              PA2-Nghia Ho-PART2
+    2 00000000                 AREA             PART2A,DATA,READONLY
+    3 00000000                 EXPORT           __Vectors
+    4 00000000         
+    5 00000000 20002000 
+                       __Vectors
+                               DCD              0x20002000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008         
+    8 00000008                 AREA             PART2B,DATA,READWRITE
+    9 00000000 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00       A       SPACE            40          ;Allocate set amoun
+                                                            t of memory space f
+                                                            or array A
+   10 00000028                 AREA             PART2C,CODE,READONLY
+   11 00000000                 ENTRY
+   12 00000000                 EXPORT           Reset_Handler
+   13 00000000         
+   14 00000000         Reset_Handler
+   15 00000000 4B08            LDR              R3,=A       ;R0=address of A
+   16 00000002 F04F 0100       MOV              R1,#0       ;R1<-0
+   17 00000006         ;R1=0
+   18 00000006         ;R1=i
+   19 00000006         loop
+   20 00000006 F000 F809       BL               Size        ;Branch to Size to 
+                                                            get R3 value
+   21 0000000A 4281            CMP              R1, R0      ;Compare R1 and R3 
+                                                            by substrating R3 f
+                                                            rom R1
+   22 0000000C D009            BEQ              EXIT        ;Branch to Exit if 
+                                                            CMP equal 0
+   23 0000000E         ;End loop when R2 reach 100
+   24 0000000E FB01 F200       MUL              R2,R1,R0    ;R2<-R1*R3
+   25 00000012         ;R2=R1*R2
+   26 00000012 F840 2021       STR              R2,[R0,R1,LSL #2] ;Store R2 int
+                                                            o main memory
+   27 00000016 F101 0101       ADD              R1,R1,#1    ;R1<-R1*1
+   28 0000001A         ;R1=R1*1
+   29 0000001A         ;Increase index by one
+   30 0000001A E7F4            B                loop        ;Branch back to loo
+                                                            p
+   31 0000001C         Size
+   32 0000001C F04F 0064       MOV              R0,#100     ;R3<-100
+   33 00000020         ;R3=100
+   34 00000020 4770            BX               LR
+   35 00000022         EXIT
+   36 00000022                 END                          ;End program
+
+
+
+ARM Macro Assembler    Page 2 PA2-Nghia Ho-PART2
+
+
+              00 00 00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7 --fpu=SoftVFP
+ --apcs=interwork --depend=.\objects\pa1.d -o.\objects\pa1.o -I.\RTE\_Target_1 
+-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMCM7\Include -IC:\Keil_v5\AR
+M\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA
+ 524" --predefine="ARMCM7 SETA 1" --list=.\listings\pa1.lst PA1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+PART2A 00000000
+
+Symbol: PART2A
+   Definitions
+      At line 2 in file PA1.s
+   Uses
+      None
+Comment: PART2A unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 5 in file PA1.s
+   Uses
+      At line 3 in file PA1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+A 00000000
+
+Symbol: A
+   Definitions
+      At line 9 in file PA1.s
+   Uses
+      At line 15 in file PA1.s
+Comment: A used once
+PART2B 00000000
+
+Symbol: PART2B
+   Definitions
+      At line 8 in file PA1.s
+   Uses
+      None
+Comment: PART2B unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+EXIT 00000022
+
+Symbol: EXIT
+   Definitions
+      At line 35 in file PA1.s
+   Uses
+      At line 22 in file PA1.s
+Comment: EXIT used once
+PART2C 00000000
+
+Symbol: PART2C
+   Definitions
+      At line 10 in file PA1.s
+   Uses
+      None
+Comment: PART2C unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 14 in file PA1.s
+   Uses
+      At line 6 in file PA1.s
+      At line 12 in file PA1.s
+
+Size 0000001C
+
+Symbol: Size
+   Definitions
+      At line 31 in file PA1.s
+   Uses
+      At line 20 in file PA1.s
+Comment: Size used once
+loop 00000006
+
+Symbol: loop
+   Definitions
+      At line 19 in file PA1.s
+   Uses
+      At line 30 in file PA1.s
+Comment: loop used once
+5 symbols
+344 symbols in table
